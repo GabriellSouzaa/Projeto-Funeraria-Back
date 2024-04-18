@@ -1,4 +1,4 @@
-package funerary.genro.feliz.cadastroCliente.model;
+package funerary.genro.feliz.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,6 +30,4 @@ public class EnderecoCliente {
 
     private String estado;
 
-    @OneToOne
-    private Cliente cliente;
 }

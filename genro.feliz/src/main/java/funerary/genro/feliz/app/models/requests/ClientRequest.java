@@ -1,11 +1,11 @@
-package funerary.genro.feliz.cadastroCliente.form;
+package funerary.genro.feliz.app.models.requests;
 
 import lombok.Getter;
 
 import java.time.LocalDate;
 
 @Getter
-public class ClienteForm {
+public class ClientRequest {
 
     private String nome;
 
@@ -24,6 +24,5 @@ public class ClienteForm {
     private String estado_civil;
 
     private Long telefone;
-
 
 }

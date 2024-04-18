@@ -1,20 +1,18 @@
-package funerary.genro.feliz.cadastroCliente.model;
+package funerary.genro.feliz.domain;
+
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "cliente")
 @Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class Cliente {
+public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +32,12 @@ public class Cliente {
 
     private String religiao;
 
-    private String estado_civil;
+    private String estadoCivil;
 
     private Long telefone;
+
+    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private EnderecoCliente endereco;
+
+
 }
