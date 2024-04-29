@@ -2,8 +2,8 @@ package funerary.genro.feliz.app.usecases.impl;
 
 import funerary.genro.feliz.app.exception.ClientNotFoundException;
 import funerary.genro.feliz.app.models.responses.ClientResponse;
-import funerary.genro.feliz.app.repositories.IClientRepository;
-import funerary.genro.feliz.app.usecases.IFindClient;
+import funerary.genro.feliz.app.repositories.ClientRepository;
+import funerary.genro.feliz.app.usecases.ClientGateway;
 import funerary.genro.feliz.domain.Client;
 import org.springframework.stereotype.Service;
 
@@ -12,11 +12,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class FindClient implements IFindClient {
+public class FindClient implements ClientGateway {
 
-    private final IClientRepository clientRepository;
+    private final ClientRepository clientRepository;
 
-    public FindClient(IClientRepository clientRepository){ this.clientRepository = clientRepository;}
+    public FindClient(ClientRepository clientRepository){ this.clientRepository = clientRepository;}
 
 
     @Override

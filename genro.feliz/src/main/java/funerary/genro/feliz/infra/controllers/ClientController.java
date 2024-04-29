@@ -1,7 +1,7 @@
 package funerary.genro.feliz.infra.controllers;
 
 import funerary.genro.feliz.app.models.responses.ClientResponse;
-import funerary.genro.feliz.app.usecases.IFindClient;
+import funerary.genro.feliz.app.usecases.ClientGateway;
 import io.swagger.annotations.Api;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,11 +14,11 @@ import java.util.List;
 @RestController
 @Api(tags = "Client")
 @RequestMapping("/client")
-public class FindClientController {
+public class ClientController {
 
-    private final IFindClient findClient;
+    private final ClientGateway findClient;
 
-    public FindClientController(IFindClient findClient){
+    public ClientController(ClientGateway findClient){
         this.findClient = findClient;
     }
 

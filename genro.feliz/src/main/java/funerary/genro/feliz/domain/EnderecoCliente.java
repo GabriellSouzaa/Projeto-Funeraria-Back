@@ -9,9 +9,6 @@ import lombok.Setter;
 @Table(name = "endereco_cliente")
 @Entity
 @Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class EnderecoCliente {
 
     @Id

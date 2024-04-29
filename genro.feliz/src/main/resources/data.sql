@@ -3,7 +3,7 @@ ALTER TABLE cliente ALTER COLUMN id INT AUTO_INCREMENT;
 ALTER TABLE endereco_cliente ALTER COLUMN id INT AUTO_INCREMENT;
 ALTER TABLE funeral_plan ALTER COLUMN id INT AUTO_INCREMENT;
 
-insert into users (email, senha) values ('souza@gmail.com', '1234');
+insert into users( login, password, role) values ('souza@gmail.com', 'teste', 'ADMIN');
 
 insert into endereco_cliente( endereco_residencial, bairro, cidade, cep, estado)
 values ('Residencial São Cristovão', 'Luiza', 'Assis', '19820-000', 'Sp');

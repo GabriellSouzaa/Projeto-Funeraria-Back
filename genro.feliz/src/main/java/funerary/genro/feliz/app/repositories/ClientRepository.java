@@ -5,7 +5,7 @@ import funerary.genro.feliz.domain.Client;
 import java.util.List;
 import java.util.Optional;
 
-public interface IClientRepository {
+public interface ClientRepository {
 
     List<Client> findAll();
 

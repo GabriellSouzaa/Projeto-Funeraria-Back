@@ -5,7 +5,7 @@ import funerary.genro.feliz.domain.FuneralPlan;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface IFuneralPlanRepository {
+public interface FuneralPlanRepository {
 
     List<FuneralPlan> findAll();
 

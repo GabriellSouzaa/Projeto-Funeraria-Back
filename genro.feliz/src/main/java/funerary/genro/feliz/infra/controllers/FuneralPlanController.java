@@ -2,7 +2,8 @@ package funerary.genro.feliz.infra.controllers;
 
 import funerary.genro.feliz.app.models.responses.DelayedFuneralPlanResponse;
 import funerary.genro.feliz.app.models.responses.FuneralPlanResponse;
-import funerary.genro.feliz.app.usecases.IFindFuneralPlan;
+import funerary.genro.feliz.app.usecases.FuneralPlanGateway;
+import funerary.genro.feliz.domain.FuneralPlan;
 import io.swagger.annotations.Api;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,11 +15,11 @@ import java.util.List;
 @RestController
 @Api(tags = "Funeral-Plan")
 @RequestMapping("/funeral-plan")
-public class FindFuneralPlanController {
+public class FuneralPlanController {
 
-    private final IFindFuneralPlan findFuneralPlan;
+    private final FuneralPlanGateway findFuneralPlan;
 
-    public FindFuneralPlanController(IFindFuneralPlan findFuneralPlan){
+    public FuneralPlanController(FuneralPlanGateway findFuneralPlan){
         this.findFuneralPlan = findFuneralPlan;
     }
 

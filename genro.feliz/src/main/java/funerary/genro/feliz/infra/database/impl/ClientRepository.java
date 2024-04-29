@@ -1,6 +1,5 @@
 package funerary.genro.feliz.infra.database.impl;
 
-import funerary.genro.feliz.app.repositories.IClientRepository;
 import funerary.genro.feliz.domain.Client;
 import funerary.genro.feliz.infra.database.ClientData;
 import org.springframework.stereotype.Repository;
@@ -9,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class ClientRepository implements IClientRepository {
+public class ClientRepository implements funerary.genro.feliz.app.repositories.ClientRepository {
 
     private final ClientData clientData;
 

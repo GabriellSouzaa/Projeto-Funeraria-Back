@@ -1,12 +1,9 @@
 package funerary.genro.feliz.app.usecases.impl;
 
-import funerary.genro.feliz.app.models.responses.ClientResponse;
 import funerary.genro.feliz.app.models.responses.DelayedFuneralPlanResponse;
 import funerary.genro.feliz.app.models.responses.FuneralPlanResponse;
-import funerary.genro.feliz.app.repositories.IClientRepository;
-import funerary.genro.feliz.app.repositories.IFuneralPlanRepository;
-import funerary.genro.feliz.app.usecases.IFindFuneralPlan;
-import funerary.genro.feliz.domain.Client;
+import funerary.genro.feliz.app.repositories.FuneralPlanRepository;
+import funerary.genro.feliz.app.usecases.FuneralPlanGateway;
 import funerary.genro.feliz.domain.FuneralPlan;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +12,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class FindFuneralPlan implements IFindFuneralPlan {
+public class FindFuneralPlan implements FuneralPlanGateway {
 
-    private final IFuneralPlanRepository funeralPlanRepository;
+    private final FuneralPlanRepository funeralPlanRepository;
 
 
-    public FindFuneralPlan(IFuneralPlanRepository funeralPlanRepository){
+    public FindFuneralPlan(FuneralPlanRepository funeralPlanRepository){
         this.funeralPlanRepository = funeralPlanRepository;
 
     }

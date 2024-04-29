@@ -5,7 +5,7 @@ import funerary.genro.feliz.app.models.responses.FuneralPlanResponse;
 
 import java.util.List;
 
-public interface IFindFuneralPlan {
+public interface FuneralPlanGateway {
 
     List<FuneralPlanResponse> getFuneralPlans();
 
