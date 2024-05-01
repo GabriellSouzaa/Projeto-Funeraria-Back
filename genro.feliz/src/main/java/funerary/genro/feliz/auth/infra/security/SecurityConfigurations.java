@@ -29,10 +29,6 @@ public class SecurityConfigurations {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/client").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/client/{id}").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/funeral-plan").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/funeral-plan/atrasados").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
