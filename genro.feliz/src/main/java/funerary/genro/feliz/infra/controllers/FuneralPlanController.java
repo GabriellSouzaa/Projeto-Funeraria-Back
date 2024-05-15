@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@Api(tags = "Funeral-Plan")
 @RequestMapping("/funeral-plan")
 public class FuneralPlanController {
 

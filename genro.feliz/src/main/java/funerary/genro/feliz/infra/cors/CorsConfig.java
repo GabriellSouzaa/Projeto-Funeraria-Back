@@ -15,6 +15,8 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true); // você USUALMENTE quer isso
         config.addAllowedOrigin("http://localhost:4200"); // substitua "https://example.com" pela origem desejada
+        config.setAllowCredentials(true); // you USUALLY want this
+        config.addAllowedOrigin("http://localhost:4200");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", config);
