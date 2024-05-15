@@ -8,6 +8,7 @@ import java.time.LocalDate;
 @Getter
 public class ClientResponse {
 
+    private final Long id;
     private final String nome;
     private final LocalDate dataNascimento;
     private final String cidadeNascimento;
@@ -19,6 +20,7 @@ public class ClientResponse {
     private final Long telefone;
 
     private ClientResponse(Client client) {
+        this.id = client.getId();
         this.nome = client.getNome();
         this.dataNascimento = client.getDataNascimento();
         this.cidadeNascimento = client.getCidadeNascimento();

@@ -16,8 +16,8 @@ public class ClientController {
 
     private final ClientGateway clientGateway;
 
-    public ClientController(ClientGateway findClient){
-        this.clientGateway = findClient;
+    public ClientController(ClientGateway clientGateway){
+        this.clientGateway = clientGateway;
     }
 
 

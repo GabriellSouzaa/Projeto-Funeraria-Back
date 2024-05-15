@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 @Getter
 public class FuneralPlanResponse {
 
+    private Long id;
+
     private LocalDateTime dataEnvio;
 
     private Float valor;
@@ -17,6 +19,7 @@ public class FuneralPlanResponse {
     private String clientNome;
 
     private FuneralPlanResponse(FuneralPlan funeralPlan){
+        this.id = funeralPlan.getId();
         this.dataEnvio = funeralPlan.getDataEnvio();
         this.valor = funeralPlan.getValor();
         this.clientNome = funeralPlan.getClient().getNome();
