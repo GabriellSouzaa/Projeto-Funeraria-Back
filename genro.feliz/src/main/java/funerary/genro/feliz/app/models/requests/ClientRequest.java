@@ -1,5 +1,6 @@
 package funerary.genro.feliz.app.models.requests;
 
+import funerary.genro.feliz.domain.Client;
 import lombok.Getter;
 
 import java.time.LocalDate;
@@ -24,5 +25,6 @@ public class ClientRequest {
     private String estado_civil;
 
     private Long telefone;
+
 
 }

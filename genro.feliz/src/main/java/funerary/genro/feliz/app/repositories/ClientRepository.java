@@ -11,5 +11,11 @@ public interface ClientRepository {
 
     Optional<Client> findById(Long id);
 
+    Optional<Client> findByNome(String nome);
+
+    void save(Client newClient);
+    void deleteById(Long id);
+
+
 
 }

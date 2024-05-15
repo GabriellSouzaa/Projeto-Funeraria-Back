@@ -4,7 +4,7 @@ package funerary.genro.feliz.domain;
 import jakarta.persistence.*;
 
 import lombok.Getter;
-
+import lombok.Setter;
 
 
 import java.time.LocalDate;
@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "cliente")
 @Getter
+@Setter
 public class Client {
 
     @Id
@@ -23,6 +24,11 @@ public class Client {
     private LocalDate dataNascimento;
 
     private String cidadeNascimento;
+
+    private String email;
+
+    @OneToOne(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private FuneralPlan funeralPlan;
 
     private String rg;
 
@@ -36,8 +42,7 @@ public class Client {
 
     private Long telefone;
 
-    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    private EnderecoCliente endereco;
+
 
 
 }

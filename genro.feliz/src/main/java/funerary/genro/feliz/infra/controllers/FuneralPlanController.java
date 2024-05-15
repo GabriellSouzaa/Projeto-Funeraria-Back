@@ -1,14 +1,13 @@
 package funerary.genro.feliz.infra.controllers;
 
+import funerary.genro.feliz.app.models.requests.FuneralPlanRequest;
 import funerary.genro.feliz.app.models.responses.DelayedFuneralPlanResponse;
 import funerary.genro.feliz.app.models.responses.FuneralPlanResponse;
 import funerary.genro.feliz.app.usecases.FuneralPlanGateway;
 import funerary.genro.feliz.domain.FuneralPlan;
 import io.swagger.annotations.Api;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,21 +16,33 @@ import java.util.List;
 @RequestMapping("/funeral-plan")
 public class FuneralPlanController {
 
-    private final FuneralPlanGateway findFuneralPlan;
+    private final FuneralPlanGateway funeralPlanGateway;
 
     public FuneralPlanController(FuneralPlanGateway findFuneralPlan){
-        this.findFuneralPlan = findFuneralPlan;
+        this.funeralPlanGateway = findFuneralPlan;
     }
 
     @GetMapping
     ResponseEntity<?> getFuneralPlans(){
-        List<FuneralPlanResponse> responses = this.findFuneralPlan.getFuneralPlans();
+        List<FuneralPlanResponse> responses = this.funeralPlanGateway.getFuneralPlans();
         return ResponseEntity.ok(responses);
     }
 
     @GetMapping(path = "/atrasados")
     ResponseEntity<?> getDelayedFuneralPlans(){
-        List<DelayedFuneralPlanResponse> responses = this.findFuneralPlan.getDelayedFuneralPlans();
+        List<DelayedFuneralPlanResponse> responses = this.funeralPlanGateway.getDelayedFuneralPlans();
         return ResponseEntity.ok(responses);
+    }
+
+    @PostMapping(path = "/create")
+    ResponseEntity<?> createFuneralPlan(@RequestBody FuneralPlanRequest funeralPlanRequest){
+        this.funeralPlanGateway.createFuneralPlan(funeralPlanRequest);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping(path = "/delete/{id}")
+    ResponseEntity<?> deleteFuneralPlans(@PathVariable Long id){
+        this.funeralPlanGateway.deleteFuneralPlan(id);
+        return ResponseEntity.ok().build();
     }
 }
