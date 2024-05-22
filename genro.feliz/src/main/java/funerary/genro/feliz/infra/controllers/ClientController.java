@@ -39,6 +39,12 @@ public class ClientController {
         return ResponseEntity.ok().build();
     }
 
+    @PutMapping(path = "/update/{id}")
+    ResponseEntity<?> updateClient(@PathVariable Long id, @RequestBody ClientRequest clientRequest){
+        this.clientGateway.updateClient(id, clientRequest);
+        return ResponseEntity.ok().build();
+    }
+
     @DeleteMapping(path = "/delete/{id}")
     ResponseEntity<?> deleteClient(@PathVariable Long id){
         this.clientGateway.deleteClient(id);

@@ -8,7 +8,6 @@ import funerary.genro.feliz.app.usecases.ClientGateway;
 import funerary.genro.feliz.domain.Client;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -53,6 +52,26 @@ public class ClientImpl implements ClientGateway {
         newClient.setEstadoCivil(clientRequest.getEstado_civil());
         newClient.setTelefone(clientRequest.getTelefone());
         this.clientRepository.save(newClient);
+    }
+
+    @Override
+    public void updateClient(Long id, ClientRequest clientRequest) {
+        Optional<Client> optionalClient = this.clientRepository.findById(id);
+        if (optionalClient.isEmpty()) {
+            throw new ClientNotFoundException("Cliente não Encontrado");
+        } else {
+            Client client = optionalClient.get();
+            client.setNome(clientRequest.getNome());
+            client.setDataNascimento(clientRequest.getDataNascimento());
+            client.setCidadeNascimento(clientRequest.getCidadeNascimento());
+            client.setRg(clientRequest.getRg());
+            client.setCpf(clientRequest.getCpf());
+            client.setProfissao(clientRequest.getProfissao());
+            client.setReligiao(clientRequest.getReligiao());
+            client.setEstadoCivil(clientRequest.getEstado_civil());
+            client.setTelefone(clientRequest.getTelefone());
+            this.clientRepository.save(client);
+        }
     }
 
     @Override

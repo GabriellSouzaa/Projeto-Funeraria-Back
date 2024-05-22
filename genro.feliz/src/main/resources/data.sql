@@ -1,6 +1,5 @@
 ALTER TABLE users ALTER COLUMN id INT AUTO_INCREMENT;
 ALTER TABLE cliente ALTER COLUMN id INT AUTO_INCREMENT;
-
 ALTER TABLE funeral_plan ALTER COLUMN id INT AUTO_INCREMENT;
 
 insert into users( login, password, role) values ('souza@gmail.com', 'teste', 'ADMIN');

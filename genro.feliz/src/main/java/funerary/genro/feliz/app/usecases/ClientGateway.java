@@ -12,5 +12,7 @@ public interface ClientGateway {
 
     void createClient(ClientRequest clientRequest);
 
+    void updateClient(Long id, ClientRequest clientRequest);
+
     void deleteClient(Long id);
 }
