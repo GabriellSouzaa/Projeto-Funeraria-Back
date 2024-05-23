@@ -2,12 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Notificação de Pagamento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-left: 0;
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            color: #555;
+        }
+        .highlight {
+            color: #d9534f;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 
-<h1 style="font-size: 20px; margin-left: 50px">Genro Feliz</h1>
-<p >Você que está lendo agr com o nome  <span th:text="${name}">é viado</span></p>
-<p>Data de hoje: <span th:text="${date}"></span>.</p>
+<h1>Olá, <span th:text="${name}">Cliente</span>!</h1>
+<p>Estamos entrando em contato para informar que existe um valor pendente em sua conta referente ao pagamento do Plano Funeral.</p>
+<p>Valor a pagar: <span class="highlight" th:text="${valorAPagar}">R$ 0,00</span></p>
+<p>Dias em atraso: <span class="highlight" th:text="${diasAtrasado}">0</span></p>
+<p>Por favor, efetue o pagamento o mais breve possível para evitar maiores encargos.</p>
+
+
 </body>
 </html>

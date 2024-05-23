@@ -27,7 +27,7 @@ public class EmailController {
         this.emailGateway = emailGateway;
     }
 
-    @GetMapping
+    @GetMapping("{nomeCliente}/{id}" )
     ResponseEntity<?> sendEmailToDelayedFuneralPlan(@PathVariable String nomeCliente, @PathVariable Long id){
          this.emailGateway.sendEmailToDelayedFuneralPlan(nomeCliente, id);
         return ResponseEntity.ok().build();
