@@ -1,30 +1,95 @@
 package funerary.genro.feliz.app.usecases.impl;
 
-import funerary.genro.feliz.app.models.requests.EmailRequest;
-import funerary.genro.feliz.app.models.responses.FuneralPlanResponse;
+import funerary.genro.feliz.app.exception.custom.ClientNotFoundException;
+import funerary.genro.feliz.app.repositories.ClientRepository;
+import funerary.genro.feliz.app.repositories.FuneralPlanRepository;
 import funerary.genro.feliz.app.usecases.EmailGateway;
+import funerary.genro.feliz.domain.Client;
 import funerary.genro.feliz.domain.FuneralPlan;
-import org.springframework.mail.SimpleMailMessage;
+import jakarta.mail.internet.MimeMessage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+import org.thymeleaf.context.Context;
+import org.thymeleaf.spring6.SpringTemplateEngine;
 
-import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
+@Service
 public class EmailImpl implements EmailGateway {
-    private final JavaMailSender mailSender;
 
-    public EmailImpl(JavaMailSender mailSender) {
-        this.mailSender = mailSender;
+    private final JavaMailSender javaMailSender;
+
+    private final SpringTemplateEngine thymeleafTemplateEngine;
+
+    private final ClientRepository clientRepository;
+
+    private final FuneralPlanRepository funeralPlanRepository;
+
+
+
+
+    public EmailImpl(JavaMailSender javaMailSender,FuneralPlanRepository funeralPlanRepository, ClientRepository clientRepository, SpringTemplateEngine thymeleafTemplateEngine){
+        this.javaMailSender = javaMailSender;
+        this.thymeleafTemplateEngine = thymeleafTemplateEngine;
+        this.clientRepository = clientRepository;
+        this.funeralPlanRepository = funeralPlanRepository;
+
     }
 
-    public void sendEmailToDelayedPlans(FuneralPlan funeralPlan, int diasAtrasado, double valorAPagar){
-        var message = new SimpleMailMessage();
-        message.setFrom("genroFeliz@gmail.com");
-        message.setTo(funeralPlan.getClient().getEmail());
-        message.setSubject("Plano Funeral se Encontra atrasado");
-        message.setText("Entramos em contato para avisar que o Plano Funeral no nome de " + funeralPlan.getClient().getNome()
-                + "se encontra atrasado á " + diasAtrasado + " e com o juros o valor mensal se encontra em " + valorAPagar
-        );
-        mailSender.send(message);
+    @Value("${spring.mail.username}")
+    private String email;
 
+    @Override
+    public void sendEmailToDelayedFuneralPlan(String nomeCliente, Long id) {
+        Optional<Client> client = this.clientRepository.findByNome(nomeCliente);
+        if (client.isEmpty()) {
+            throw new ClientNotFoundException("Cliente não Encontrado");
+        }
+        Optional<FuneralPlan> funeralPlan = this.funeralPlanRepository.findById(id);
+        if (funeralPlan.isEmpty()) {
+            throw new ClientNotFoundException("Plano Funeral não Encontrado");
+        }
+
+        sendEmail(client,funeralPlan);
     }
+
+    public void sendEmail(Optional<Client> client, Optional<FuneralPlan> funeralPlan) {
+        Map<String, Object> templateModel = new HashMap<>();
+        templateModel.put("name", client.get().getNome());
+        templateModel.put("valorAPagar", CalculateDelayedPlan.valorAPagar(funeralPlan.get()));
+        templateModel.put("diasAtrasado", CalculateDelayedPlan.calcularDiasAtraso(funeralPlan.get()));
+
+        try {
+            MimeMessage message = javaMailSender.createMimeMessage();
+
+            MimeMessageHelper helper = new MimeMessageHelper(
+                    message,
+                    MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
+                    StandardCharsets.UTF_8.name());
+
+            Context context = new Context();
+            context.setVariables(templateModel);
+
+            String htmlContent = thymeleafTemplateEngine.process("genro-feliz.html", context);
+
+            helper.setFrom(email);
+            helper.setTo(client.get().getEmail());
+            helper.setSubject("Plano Funeral Atrasado");
+            helper.setText(htmlContent, true);
+
+            javaMailSender.send(message);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
 }
+

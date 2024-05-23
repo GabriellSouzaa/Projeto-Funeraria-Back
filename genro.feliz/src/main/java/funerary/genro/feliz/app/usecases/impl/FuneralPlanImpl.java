@@ -67,7 +67,7 @@ public class FuneralPlanImpl implements FuneralPlanGateway {
     public void deleteFuneralPlan(Long id) {
         Optional<FuneralPlan> optionalFuneralPlan = this.funeralPlanRepository.findById(id);
         if (optionalFuneralPlan.isEmpty()) {
-            throw new ClientNotFoundException("Cliente não Encontrado");
+            throw new ClientNotFoundException("Plano Funeral não Encontrado");
         } else {
             this.funeralPlanRepository.deleteById(optionalFuneralPlan.get().getId());
         }

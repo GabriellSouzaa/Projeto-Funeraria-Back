@@ -1,10 +1,8 @@
 package funerary.genro.feliz.app.usecases;
 
-import funerary.genro.feliz.domain.FuneralPlan;
-
-
+import java.util.Map;
 
 public interface EmailGateway {
 
-   void sendEmailToDelayedPlans(FuneralPlan funeralPlan, int diasAtrasado, double valorAPagar);
+     void sendEmailToDelayedFuneralPlan(String nomeCliente, Long id);
 }

@@ -4,6 +4,7 @@ import funerary.genro.feliz.app.models.requests.ClientRequest;
 import funerary.genro.feliz.app.models.responses.ClientResponse;
 import funerary.genro.feliz.app.usecases.ClientGateway;
 import io.swagger.annotations.Api;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,7 @@ import java.util.List;
 public class ClientController {
 
     private final ClientGateway clientGateway;
+
 
     public ClientController(ClientGateway clientGateway){
         this.clientGateway = clientGateway;

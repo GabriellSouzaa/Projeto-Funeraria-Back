@@ -8,6 +8,8 @@ import lombok.Getter;
 @Getter
 public class DelayedFuneralPlanResponse {
 
+    private Long id;
+
     private String tempoAtrasado;
 
     private String nomeCliente;
@@ -17,6 +19,7 @@ public class DelayedFuneralPlanResponse {
     private Float valorAPagar;
 
     private DelayedFuneralPlanResponse(FuneralPlan funeralPlan){
+        this.id = funeralPlan.getId();
         this.tempoAtrasado = CalculateDelayedPlan.calcularDiasAtraso(funeralPlan);
         this.nomeCliente = funeralPlan.getClient().getNome();
         this.cpfCliente = funeralPlan.getClient().getCpf();
