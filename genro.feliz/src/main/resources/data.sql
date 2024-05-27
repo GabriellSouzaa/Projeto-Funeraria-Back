@@ -100,31 +100,31 @@ VALUES ('Fibra de vidro', 'Preto', '2m', 'Modelo J', 750.00);
 INSERT INTO beneficiary (client_id, nome, dataNascimento, adicional)
 VALUES (1, 'Ana Souza', '2005-06-15', 100.50);
 
-INSERT INTO beneficiary (client_id, nome, dataNascimento, adicional)
+INSERT INTO beneficiary (client_id, nome, data_nascimento, adicional)
 VALUES (1, 'João Souza', '2008-12-20', 150.00);
 
-INSERT INTO beneficiary (client_id, nome, dataNascimento, adicional)
+INSERT INTO beneficiary (client_id, nome, data_nascimento, adicional)
 VALUES (2, 'Carlos Silva', '2010-05-30', 200.75);
 
-INSERT INTO beneficiary (client_id, nome, dataNascimento, adicional)
+INSERT INTO beneficiary (client_id, nome, data_nascimento, adicional)
 VALUES (2, 'Marta Silva', '2011-07-15', 180.30);
 
-INSERT INTO beneficiary (client_id, nome, dataNascimento, adicional)
+INSERT INTO beneficiary (client_id, nome, data_nascimento, adicional)
 VALUES (3, 'Lucas Oliveira', '2007-03-10', 250.00);
 
-INSERT INTO beneficiary (client_id, nome, dataNascimento, adicional)
+INSERT INTO beneficiary (client_id, nome, data_nascimento, adicional)
 VALUES (3, 'Sofia Oliveira', '2013-01-25', 170.20);
 
-INSERT INTO beneficiary (client_id, nome, dataNascimento, adicional)
+INSERT INTO beneficiary (client_id, nome, data_nascimento, adicional)
 VALUES (4, 'Juliana Santos', '2006-09-10', 300.00);
 
-INSERT INTO beneficiary (client_id, nome, dataNascimento, adicional)
+INSERT INTO beneficiary (client_id, nome, data_nascimento, adicional)
 VALUES (5, 'Mariana Pereira', '2012-01-25', 220.15);
 
 INSERT INTO beneficiary (client_id, nome, dataNascimento, adicional)
 VALUES (5, 'Pedro Pereira', '2014-06-17', 190.40);
 
-INSERT INTO beneficiary (client_id, nome, dataNascimento, adicional)
+INSERT INTO beneficiary (client_id, nome, data_nascimento, adicional)
 VALUES (6, 'Roberto Costa', '2007-04-15', 210.60);
 
 INSERT INTO funeral-parlor (descricao, valor)
