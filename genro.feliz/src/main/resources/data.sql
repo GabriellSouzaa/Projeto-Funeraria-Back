@@ -49,6 +49,7 @@ VALUES ('João Santos', '1987-09-23', 'Natal', '369852147', '65498732101', 'Anal
 
 INSERT INTO cliente (nome, data_nascimento, cidade_nascimento, rg, cpf, profissao, religiao, estado_civil, telefone, email)
 VALUES ('Isabela Costa', '1996-02-14', 'Florianópolis', '147852369', '98765432101', 'Arquiteta', 'Judaísmo', 'Casada', '48963217548', 'matheusxmg2@gmail.com');
+
 INSERT INTO funeral_plan (data_envio, valor, client_id, pago_esse_mes, data_pagamento, data_pagamento_efetuado) VALUES
                                                                                                                ('2024-04-18 10:00:00', 2300.75, 1, 'N', '2024-04-10', NULL),
                                                                                                                ('2024-04-18 12:30:00', 1800.50, 2, 'N', '2024-04-15', NULL),
@@ -65,3 +66,33 @@ INSERT INTO funeral_plan (data_envio, valor, client_id, pago_esse_mes, data_paga
                                                                                                                ('2024-04-20 09:25:00', 1650.80, 13, 'N', '2024-04-30', NULL),
                                                                                                                ('2024-04-20 11:40:00', 1450.60, 14, 'N', '2024-04-30', NULL),
                                                                                                                ('2024-04-20 14:30:00', 2500.00, 15, 'S', '2024-04-30', NULL);
+
+INSERT INTO coffin (material, cor, comprimento, modelo, preco)
+VALUES ('Madeira', 'Marrom', '2m', 'Modelo A', 500.00);
+
+INSERT INTO coffin (material, cor, comprimento, modelo, preco)
+VALUES ('Metal', 'Preto', '2.2m', 'Modelo B', 750.00);
+
+INSERT INTO coffin (material, cor, comprimento, modelo, preco)
+VALUES ('Fibra de vidro', 'Branco', '1.8m', 'Modelo C', 650.00);
+
+INSERT INTO coffin (material, cor, comprimento, modelo, preco)
+VALUES ('Madeira', 'Vermelho', '2.1m', 'Modelo D', 800.00);
+
+INSERT INTO coffin (material, cor, comprimento, modelo, preco)
+VALUES ('Metal', 'Cinza', '2m', 'Modelo E', 900.00);
+
+INSERT INTO coffin (material, cor, comprimento, modelo, preco)
+VALUES ('Madeira', 'Preto', '2.3m', 'Modelo F', 550.00);
+
+INSERT INTO coffin (material, cor, comprimento, modelo, preco)
+VALUES ('Fibra de vidro', 'Azul', '2m', 'Modelo G', 700.00);
+
+INSERT INTO coffin (material, cor, comprimento, modelo, preco)
+VALUES ('Metal', 'Verde', '2.2m', 'Modelo H', 650.00);
+
+INSERT INTO coffin (material, cor, comprimento, modelo, preco)
+VALUES ('Madeira', 'Cinza', '2.1m', 'Modelo I', 600.00);
+
+INSERT INTO coffin (material, cor, comprimento, modelo, preco)
+VALUES ('Fibra de vidro', 'Preto', '2m', 'Modelo J', 750.00);
