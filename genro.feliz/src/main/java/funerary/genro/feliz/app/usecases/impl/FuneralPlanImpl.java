@@ -46,6 +46,29 @@ public class FuneralPlanImpl implements FuneralPlanGateway {
     }
 
     @Override
+    public void updateFuneralPlan(Long id, FuneralPlanRequest funeralPlanRequest) {
+        Optional<FuneralPlan> optionalFuneralPlan = this.funeralPlanRepository.findById(id);
+        if (optionalFuneralPlan.isEmpty()) {
+            throw new ClientNotFoundException("Plano Funeral não Encontrado");
+        } else {
+            FuneralPlan funeralPlan = optionalFuneralPlan.get();
+            funeralPlan.setDataEnvio(LocalDateTime.now());
+            funeralPlan.setValor(funeralPlanRequest.getValor());
+            funeralPlan.setPagoEsseMes("Não");
+            funeralPlan.setDataPagamento(funeralPlanRequest.getDataPagamento());
+            funeralPlan.setDataPagamentoEfetuado(null);
+            Optional<Client> client = this.clientRepository.findByNome(funeralPlanRequest.getNomeCliente());
+            if (client.isEmpty()) {
+                throw new ClientNotFoundException("Cliente não Encontrado");
+            } else {
+                funeralPlan.setClient(client.get());
+            }
+            this.funeralPlanRepository.save(funeralPlan);
+        }
+
+    }
+
+    @Override
     public void createFuneralPlan(FuneralPlanRequest funeralPlanRequest) {
         FuneralPlan newFuneralPlan = new FuneralPlan();
         newFuneralPlan.setDataEnvio(LocalDateTime.now());

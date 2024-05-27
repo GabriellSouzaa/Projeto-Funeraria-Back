@@ -12,6 +12,8 @@ public interface FuneralPlanGateway {
 
     List<DelayedFuneralPlanResponse> getDelayedFuneralPlans();
 
+    void updateFuneralPlan(Long id, FuneralPlanRequest funeralPlanRequest);
+
     void createFuneralPlan(FuneralPlanRequest funeralPlanRequest);
 
     void deleteFuneralPlan(Long id);

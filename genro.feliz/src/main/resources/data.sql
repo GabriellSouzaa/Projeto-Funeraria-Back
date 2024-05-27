@@ -126,3 +126,12 @@ VALUES (5, 'Pedro Pereira', '2014-06-17', 190.40);
 
 INSERT INTO beneficiary (client_id, nome, dataNascimento, adicional)
 VALUES (6, 'Roberto Costa', '2007-04-15', 210.60);
+
+INSERT INTO funeral-parlor (descricao, valor)
+VALUES ('Sala de Velório Principal', 1500.00);
+
+INSERT INTO funeral-parlor (descricao, valor)
+VALUES ('Sala de Velório Secundária', 1200.00);
+
+INSERT INTO funeral-parlor (descricao, valor)
+VALUES ('Sala de Velório VIP', 2000.00);

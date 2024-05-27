@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api(tags = "Funeral Plan")
 @RestController
 @RequestMapping("/funeral-plan")
 public class FuneralPlanController {
@@ -32,7 +33,11 @@ public class FuneralPlanController {
         List<DelayedFuneralPlanResponse> responses = this.funeralPlanGateway.getDelayedFuneralPlans();
         return ResponseEntity.ok(responses);
     }
-
+    @PostMapping(path = "/update/{id}")
+    ResponseEntity<?> updateFuneralPlan(@PathVariable Long id, @RequestBody FuneralPlanRequest funeralPlanRequest){
+        this.funeralPlanGateway.updateFuneralPlan(id, funeralPlanRequest);
+        return ResponseEntity.ok().build();
+    }
     @PostMapping(path = "/create")
     ResponseEntity<?> createFuneralPlan(@RequestBody FuneralPlanRequest funeralPlanRequest){
         this.funeralPlanGateway.createFuneralPlan(funeralPlanRequest);
