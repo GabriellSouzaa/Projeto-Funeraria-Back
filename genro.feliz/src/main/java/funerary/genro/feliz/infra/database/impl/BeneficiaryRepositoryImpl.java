@@ -2,6 +2,7 @@ package funerary.genro.feliz.infra.database.impl;
 
 import funerary.genro.feliz.app.repositories.BeneficiaryRepository;
 import funerary.genro.feliz.domain.Beneficiary;
+import funerary.genro.feliz.domain.Client;
 import funerary.genro.feliz.infra.database.BeneficiaryData;
 import funerary.genro.feliz.infra.database.ClientData;
 import org.springframework.stereotype.Repository;
@@ -21,6 +22,11 @@ public class BeneficiaryRepositoryImpl implements BeneficiaryRepository {
     @Override
     public List<Beneficiary> findAll() {
         return this.beneficiaryData.findAll();
+    }
+
+    @Override
+    public List<Beneficiary> findAllByClient(Client client) {
+        return this.beneficiaryData.findAllByClient(client);
     }
 
     @Override

@@ -18,13 +18,31 @@ import java.util.stream.Collectors;
 @Service
 public class BeneficiaryImpl implements BeneficiaryGateway {
 
+    private final ClientRepository clientRepository;
+
     private final BeneficiaryRepository beneficiaryRepository;
 
-    public BeneficiaryImpl(BeneficiaryRepository beneficiaryRepository){ this.beneficiaryRepository = beneficiaryRepository;}
+    public BeneficiaryImpl(BeneficiaryRepository beneficiaryRepository, ClientRepository clientRepository){
+        this.beneficiaryRepository = beneficiaryRepository;
+        this.clientRepository = clientRepository;
+    }
 
     @Override
     public List<BeneficiaryResponse> getBeneficiarys() {
         List<Beneficiary> beneficiaries = this.beneficiaryRepository.findAll();
+        return beneficiaries.stream().map(BeneficiaryResponse::from).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<BeneficiaryResponse> getBeneficiariesOfClient(Long id) {
+        Optional<Client> optionalClient = this.clientRepository.findById(id);
+        Client client;
+        if (optionalClient.isEmpty()) {
+            throw new ClientNotFoundException("Cliente não Encontrado");
+        } else {
+            client = optionalClient.get();
+        }
+        List<Beneficiary> beneficiaries = this.beneficiaryRepository.findAllByClient(client);
         return beneficiaries.stream().map(BeneficiaryResponse::from).collect(Collectors.toList());
     }
 

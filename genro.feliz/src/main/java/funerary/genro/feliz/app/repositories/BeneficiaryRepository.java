@@ -10,6 +10,8 @@ public interface BeneficiaryRepository {
 
     List<Beneficiary> findAll();
 
+    List<Beneficiary> findAllByClient(Client client);
+
     Optional<Beneficiary> findById(Long id);
 
     void save(Beneficiary newBeneficiary);
