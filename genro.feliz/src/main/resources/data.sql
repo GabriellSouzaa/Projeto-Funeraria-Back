@@ -97,7 +97,16 @@ VALUES ('Madeira', 'Cinza', '2.1m', 'Modelo I', 600.00);
 INSERT INTO coffin (material, cor, comprimento, modelo, preco)
 VALUES ('Fibra de vidro', 'Preto', '2m', 'Modelo J', 750.00);
 
-INSERT INTO beneficiary (client_id, nome, dataNascimento, adicional)
+INSERT INTO funeral_parlor (descricao, valor)
+VALUES ('Sala de Velório Principal', 1500.00);
+
+INSERT INTO funeral_parlor (descricao, valor)
+VALUES ('Sala de Velório Secundária', 1200.00);
+
+INSERT INTO funeral_parlor (descricao, valor)
+VALUES ('Sala de Velório VIP', 2000.00);
+
+INSERT INTO beneficiary (client_id, nome, data_nascimento, adicional)
 VALUES (1, 'Ana Souza', '2005-06-15', 100.50);
 
 INSERT INTO beneficiary (client_id, nome, data_nascimento, adicional)
@@ -121,17 +130,10 @@ VALUES (4, 'Juliana Santos', '2006-09-10', 300.00);
 INSERT INTO beneficiary (client_id, nome, data_nascimento, adicional)
 VALUES (5, 'Mariana Pereira', '2012-01-25', 220.15);
 
-INSERT INTO beneficiary (client_id, nome, dataNascimento, adicional)
+INSERT INTO beneficiary (client_id, nome, data_nascimento, adicional)
 VALUES (5, 'Pedro Pereira', '2014-06-17', 190.40);
 
 INSERT INTO beneficiary (client_id, nome, data_nascimento, adicional)
 VALUES (6, 'Roberto Costa', '2007-04-15', 210.60);
 
-INSERT INTO funeral-parlor (descricao, valor)
-VALUES ('Sala de Velório Principal', 1500.00);
 
-INSERT INTO funeral-parlor (descricao, valor)
-VALUES ('Sala de Velório Secundária', 1200.00);
-
-INSERT INTO funeral-parlor (descricao, valor)
-VALUES ('Sala de Velório VIP', 2000.00);
