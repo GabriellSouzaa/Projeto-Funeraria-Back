@@ -11,7 +11,7 @@ public class BeneficiaryResponse {
 
     private Long id;
 
-    private Client client;
+    private Long client;
 
     private String nome;
 
@@ -23,7 +23,7 @@ public class BeneficiaryResponse {
         this.id = beneficiary.getId();
         this.nome = beneficiary.getNome();
         this.dataNascimento = beneficiary.getDataNascimento();
-        this.client = beneficiary.getClient();
+        this.client = beneficiary.getClient().getId();
         this.adicional = beneficiary.getAdicional();
     }
 
