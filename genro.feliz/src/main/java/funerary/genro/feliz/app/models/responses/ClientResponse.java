@@ -19,6 +19,7 @@ public class ClientResponse {
     private final String estadoCivil;
     private final Long telefone;
 
+
     private ClientResponse(Client client) {
         this.id = client.getId();
         this.nome = client.getNome();

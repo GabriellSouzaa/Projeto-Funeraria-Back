@@ -8,6 +8,7 @@ import java.util.List;
 public interface ClientGateway {
 
     List<ClientResponse> getClients();
+
     ClientResponse getClient(Long id);
 
     void createClient(ClientRequest clientRequest);

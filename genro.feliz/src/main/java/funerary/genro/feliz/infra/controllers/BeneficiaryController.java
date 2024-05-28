@@ -52,4 +52,10 @@ public class BeneficiaryController {
         this.beneficiaryGateway.deleteBeneficiary(id);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping(path = "/beneficiaries/{id}")
+    ResponseEntity<?> getBeneficiariesOfClient(@PathVariable Long id){
+        this.beneficiaryGateway.getBeneficiariesOfClient(id);
+        return ResponseEntity.ok().build();
+    }
 }
