@@ -49,4 +49,9 @@ public class FuneralPlanController {
         this.funeralPlanGateway.deleteFuneralPlan(id);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping(path = "/report/delayed-plan")
+    ResponseEntity<?> getReportDelayedPlan(){
+        return this.funeralPlanGateway.getReportDelayedFuneralPlans();
+    }
 }
