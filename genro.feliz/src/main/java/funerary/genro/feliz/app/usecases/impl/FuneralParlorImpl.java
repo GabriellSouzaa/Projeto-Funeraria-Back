@@ -73,7 +73,7 @@ public class FuneralParlorImpl implements FuneralParlorGateway {
             throw new ClientNotFoundException("Sala de Velório não Encontrada!");
         } else {
             funeralParlor = optionalFuneralParlor.get();
-            this.funeralParlorRepository.save(funeralParlor);
+            this.funeralParlorRepository.deleteById(funeralParlor.getId());
            }
         }
 
