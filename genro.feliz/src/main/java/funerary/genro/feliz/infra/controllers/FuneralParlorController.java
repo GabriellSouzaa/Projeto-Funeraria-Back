@@ -26,6 +26,12 @@ public class FuneralParlorController {
         return ResponseEntity.ok(responses);
     }
 
+    @GetMapping(path = "/{id}")
+    ResponseEntity<?> getFuneralParlors(@PathVariable Long id){
+        FuneralParlorResponse response = this.funeralParlorGateway.getFuneralParlor(id);
+        return ResponseEntity.ok(response);
+    }
+
     @PostMapping(path = "/update/{id}")
     ResponseEntity<?> updateFuneralPlan(@PathVariable Long id, @RequestBody FuneralParlorRequest funeralParlorRequest){
         this.funeralParlorGateway.updateFuneralParlor(id, funeralParlorRequest);
