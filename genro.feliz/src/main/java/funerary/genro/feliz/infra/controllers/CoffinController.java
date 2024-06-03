@@ -51,4 +51,6 @@ public class CoffinController {
         this.coffinGateway.deleteCoffin(id);
         return ResponseEntity.ok().build();
     }
+
+
 }

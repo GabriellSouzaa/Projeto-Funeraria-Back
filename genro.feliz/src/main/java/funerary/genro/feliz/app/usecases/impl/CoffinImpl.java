@@ -3,6 +3,7 @@ package funerary.genro.feliz.app.usecases.impl;
 import funerary.genro.feliz.app.exception.custom.ClientNotFoundException;
 import funerary.genro.feliz.app.models.requests.CoffinRequest;
 import funerary.genro.feliz.app.models.responses.CoffinResponse;
+import funerary.genro.feliz.app.models.responses.CoffinSalesResponse;
 import funerary.genro.feliz.app.repositories.CoffinRepository;
 import funerary.genro.feliz.app.usecases.CoffinGateway;
 import funerary.genro.feliz.domain.Coffin;
@@ -38,6 +39,11 @@ public class CoffinImpl implements CoffinGateway {
         }
 
         return CoffinResponse.from(coffin);
+    }
+
+    @Override
+    public List<CoffinSalesResponse> getCoffinsSales() {
+        return List.of();
     }
 
     @Override
