@@ -41,10 +41,6 @@ public class CoffinImpl implements CoffinGateway {
         return CoffinResponse.from(coffin);
     }
 
-    @Override
-    public List<CoffinSalesResponse> getCoffinsSales() {
-        return List.of();
-    }
 
     @Override
     public void createCoffin(CoffinRequest coffinRequest) {
@@ -77,7 +73,6 @@ public class CoffinImpl implements CoffinGateway {
     @Override
     public void deleteCoffin(Long id) {
         Optional<Coffin> optionalCoffin = this.coffinRepository.findById(id);
-        Coffin coffin;
         if (optionalCoffin.isEmpty()) {
             throw new ClientNotFoundException("Caixão não Encontrado!");
         } else {
