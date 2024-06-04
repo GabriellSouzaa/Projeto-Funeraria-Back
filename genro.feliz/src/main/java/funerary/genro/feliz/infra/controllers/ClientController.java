@@ -2,6 +2,7 @@ package funerary.genro.feliz.infra.controllers;
 
 import funerary.genro.feliz.app.models.requests.ClientRequest;
 import funerary.genro.feliz.app.models.responses.ClientResponse;
+import funerary.genro.feliz.app.models.responses.DiscountResponse;
 import funerary.genro.feliz.app.usecases.ClientGateway;
 import io.swagger.annotations.Api;
 
@@ -26,6 +27,12 @@ public class ClientController {
     @GetMapping
     ResponseEntity<?> getFindClient(){
         List<ClientResponse> responses = this.clientGateway.getClients();
+        return ResponseEntity.ok(responses);
+    }
+
+    @GetMapping("/discount/{id}")
+    ResponseEntity<?> getDiscountClient(@PathVariable Long id){
+        DiscountResponse responses = this.clientGateway.getDiscountClient(id);
         return ResponseEntity.ok(responses);
     }
 

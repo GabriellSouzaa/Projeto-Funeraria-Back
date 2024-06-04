@@ -4,6 +4,7 @@ import funerary.genro.feliz.app.exception.custom.ClientNotFoundException;
 import funerary.genro.feliz.app.models.requests.ClientRequest;
 import funerary.genro.feliz.app.models.responses.ClientResponse;
 import funerary.genro.feliz.app.models.responses.CoffinSalesResponse;
+import funerary.genro.feliz.app.models.responses.DiscountResponse;
 import funerary.genro.feliz.app.repositories.ClientRepository;
 import funerary.genro.feliz.app.usecases.ClientGateway;
 import funerary.genro.feliz.domain.Client;
@@ -77,6 +78,17 @@ public class ClientImpl implements ClientGateway {
             client.setTelefone(clientRequest.getTelefone());
             this.clientRepository.save(client);
         }
+    }
+
+    @Override
+    public DiscountResponse getDiscountClient(Long id) {
+        Optional<Client> optionalClient = this.clientRepository.findById(id);
+        if (optionalClient.isEmpty()) {
+            throw new ClientNotFoundException("Cliente não Encontrado");
+        } else {
+            return DiscountResponse.from(optionalClient.get());
+        }
+
     }
 
     public List<ClientResponse> getClientsUnactive(){
