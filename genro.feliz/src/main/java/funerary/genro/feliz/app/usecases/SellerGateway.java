@@ -4,6 +4,7 @@ import funerary.genro.feliz.app.models.requests.CoffinRequest;
 import funerary.genro.feliz.app.models.requests.SellerRequest;
 import funerary.genro.feliz.app.models.responses.CoffinResponse;
 import funerary.genro.feliz.app.models.responses.SellerResponse;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface SellerGateway {
     void updateSeller(Long id, SellerRequest sellerRequest);
 
     void deleteSeller(Long id);
+
+
 }

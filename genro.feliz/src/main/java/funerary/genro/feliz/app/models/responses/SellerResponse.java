@@ -16,6 +16,7 @@ public class SellerResponse {
         this.id = seller.getId();
         this.cargo = seller.getCargo();
         this.nome = seller.getNome();
+
     }
 
     public static SellerResponse from(Seller seller){

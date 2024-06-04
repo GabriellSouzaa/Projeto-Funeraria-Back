@@ -5,9 +5,10 @@ import lombok.Getter;
 @Getter
 public class SellerRequest {
 
-    private Long id;
 
     private String nome;
 
     private String cargo;
+
+
 }
