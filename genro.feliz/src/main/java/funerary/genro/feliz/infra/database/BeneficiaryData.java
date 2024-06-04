@@ -9,4 +9,6 @@ import java.util.List;
 public interface BeneficiaryData extends JpaRepository<Beneficiary, Long> {
 
     List<Beneficiary> findAllByClient(Client client);
+
+    List<Beneficiary> findAllByAtivo(String ativo);
 }

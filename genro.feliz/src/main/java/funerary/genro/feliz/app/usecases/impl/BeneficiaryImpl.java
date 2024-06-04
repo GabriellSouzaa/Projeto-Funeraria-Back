@@ -52,6 +52,12 @@ public class BeneficiaryImpl implements BeneficiaryGateway {
     }
 
     @Override
+    public List<BeneficiaryResponse> getBeneficiariesDeathOfClient(Long id) {
+        List<Beneficiary> beneficiaries = this.beneficiaryRepository.findAllByAtivo("N");
+        return beneficiaries.stream().map(BeneficiaryResponse::from).collect(Collectors.toList());
+    }
+
+    @Override
     public ResponseEntity<byte[]> getBeneficiariesOfClientReport(Long id) {
 
         ClassLoader classLoader = getClass().getClassLoader();

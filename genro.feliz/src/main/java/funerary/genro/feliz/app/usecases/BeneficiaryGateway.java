@@ -16,6 +16,8 @@ public interface BeneficiaryGateway {
 
     List<BeneficiaryResponse> getBeneficiariesOfClient(Long id);
 
+    List<BeneficiaryResponse> getBeneficiariesDeathOfClient(Long id);
+
     ResponseEntity<byte[]> getBeneficiariesOfClientReport(Long id);
 
     BeneficiaryResponse getBeneficiary(Long id);

@@ -12,6 +12,8 @@ public interface BeneficiaryRepository {
 
     List<Beneficiary> findAllByClient(Client client);
 
+    List<Beneficiary> findAllByAtivo(String ativo);
+
     Optional<Beneficiary> findById(Long id);
 
     void save(Beneficiary newBeneficiary);

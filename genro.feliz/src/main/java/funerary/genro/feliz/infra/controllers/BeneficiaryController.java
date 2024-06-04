@@ -59,6 +59,12 @@ public class BeneficiaryController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping(path = "/death/client/{id}")
+    ResponseEntity<?> getBeneficiariesDeathOfClient(@PathVariable Long id){
+        List<BeneficiaryResponse> response = this.beneficiaryGateway.getBeneficiariesDeathOfClient(id);
+        return ResponseEntity.ok(response);
+    }
+
     @GetMapping(path = "/client/report/{id}")
     ResponseEntity<?> getBeneficiariesOfClientReport(@PathVariable Long id){
         return this.beneficiaryGateway.getBeneficiariesOfClientReport(id);

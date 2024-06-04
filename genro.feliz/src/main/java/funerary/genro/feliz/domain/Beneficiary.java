@@ -24,4 +24,6 @@ public class Beneficiary {
     private LocalDate dataNascimento;
 
     private Float adicional;
+
+    private String ativo;
 }
