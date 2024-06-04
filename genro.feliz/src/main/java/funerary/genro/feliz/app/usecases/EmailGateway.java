@@ -8,4 +8,6 @@ public interface EmailGateway {
 
      void sendEmailToDelayedFuneralPlan(String nomeCliente, Long id);
 
+     void sendEmailToBeneficiariesDeath(Long id);
+
 }

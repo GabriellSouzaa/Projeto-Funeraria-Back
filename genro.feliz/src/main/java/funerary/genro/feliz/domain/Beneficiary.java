@@ -26,4 +26,6 @@ public class Beneficiary {
     private Float adicional;
 
     private String ativo;
+
+    private String email;
 }

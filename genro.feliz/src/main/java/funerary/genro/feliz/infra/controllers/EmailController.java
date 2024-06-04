@@ -32,4 +32,10 @@ public class EmailController {
          this.emailGateway.sendEmailToDelayedFuneralPlan(nomeCliente, id);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping(path = "beneficiary/{id}")
+    ResponseEntity<?> sendEmailToBeneficiariesDeath( @PathVariable Long id){
+        this.emailGateway.sendEmailToBeneficiariesDeath( id);
+        return ResponseEntity.ok().build();
+    }
 }

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notificação de Falecimento de Beneficiário</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-left: 0;
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            color: #555;
+        }
+        .highlight {
+            color: #d9534f;
+            font-weight: bold;
+        }
+        .details {
+            margin-top: 20px;
+        }
+        .details p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Olá, <span th:text="${name}">Cliente</span>!</h1>
+<p>É com grande pesar que informamos o falecimento do(a) beneficiário(a) <span class="highlight" th:text="${nomeBeneficiary}">Nome do Beneficiário</span>.</p>
+<p>Prestamos nossas sinceras condolências a você e sua família neste momento difícil.</p>
+<div class="details">
+    <h2>Detalhes:</h2>
+    <p>Nome do Beneficiário: <span th:text="${nomeBeneficiary}">Nome do Beneficiário</span></p>
+</div>
+<p>Por favor, entre em contato conosco para quaisquer necessidades adicionais ou assistência.</p>
+
+<p>Atenciosamente,</p>
+<p>Equipe de Suporte</p>
+
+</body>
+</html>
