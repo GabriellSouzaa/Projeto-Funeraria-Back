@@ -2,9 +2,7 @@ package funerary.genro.feliz.infra.controllers;
 
 
 import funerary.genro.feliz.app.models.requests.HealthPlanRequest;
-import funerary.genro.feliz.app.models.requests.PatientDeathRequest;
 import funerary.genro.feliz.app.models.responses.HealthPlanResponse;
-import funerary.genro.feliz.app.models.responses.PatientDeathResponse;
 import funerary.genro.feliz.app.usecases.HealthPlanGateway;
 import io.swagger.annotations.Api;
 import org.springframework.http.ResponseEntity;
@@ -12,14 +10,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Api(tags = "Health Death")
+@Api(tags = "Health Plan")
 @RestController
-@RequestMapping("/health-death")
-public class HealthDeathController {
+@RequestMapping("/health-plan")
+public class HealthPlanController {
 
     private final HealthPlanGateway healthPlanGateway;
 
-    public HealthDeathController(HealthPlanGateway healthPlanGateway){
+    public HealthPlanController(HealthPlanGateway healthPlanGateway){
         this.healthPlanGateway = healthPlanGateway;
     }
 
