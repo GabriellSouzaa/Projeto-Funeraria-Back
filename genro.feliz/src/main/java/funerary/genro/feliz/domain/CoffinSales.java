@@ -25,4 +25,7 @@ public class CoffinSales {
 
     private LocalDate dataVenda;
 
+    @ManyToOne
+    private Client client;
+
 }

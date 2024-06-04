@@ -150,16 +150,17 @@ INSERT INTO seller_salles(seller_id, qtd_venda, tipo_venda, data_venda) VALUES (
 INSERT INTO seller_salles(seller_id, qtd_venda, tipo_venda, data_venda) VALUES (2, 2, 'Plano Funeral', '2024-06-02');
 INSERT INTO seller_salles(seller_id, qtd_venda, tipo_venda, data_venda) VALUES (3, 2, 'Caixão', '2024-07-02');
 
-INSERT INTO coffin_salles (seller_id, coffin_id, data_venda) VALUES (1, 1, '2024-05-01');
-INSERT INTO coffin_salles (seller_id, coffin_id, data_venda) VALUES (2, 2, '2024-05-02');
-INSERT INTO coffin_salles (seller_id, coffin_id, data_venda) VALUES (3, 3, '2024-05-03');
-INSERT INTO coffin_salles (seller_id, coffin_id, data_venda) VALUES (3, 1, '2024-06-04');
-INSERT INTO coffin_salles (seller_id, coffin_id, data_venda) VALUES (3, 2, '2024-05-05');
-INSERT INTO coffin_salles (seller_id, coffin_id, data_venda) VALUES (1, 3, '2024-06-06');
-INSERT INTO coffin_salles (seller_id, coffin_id, data_venda) VALUES (2, 4, '2024-05-07');
-INSERT INTO coffin_salles (seller_id, coffin_id, data_venda) VALUES (3, 4, '2024-05-08');
-INSERT INTO coffin_salles (seller_id, coffin_id, data_venda) VALUES (3, 5, '2024-05-09');
-INSERT INTO coffin_salles (seller_id, coffin_id, data_venda) VALUES (3, 5, '2024-06-10');
+
+INSERT INTO coffin_salles (seller_id, coffin_id, data_venda, client_id) VALUES (1, 1, '2024-05-01', 1);
+INSERT INTO coffin_salles (seller_id, coffin_id, data_venda, client_id) VALUES (2, 2, '2024-05-02', 2);
+INSERT INTO coffin_salles (seller_id, coffin_id, data_venda, client_id) VALUES (3, 3, '2024-05-03', 3);
+INSERT INTO coffin_salles (seller_id, coffin_id, data_venda, client_id) VALUES (3, 1, '2024-06-04', 4);
+INSERT INTO coffin_salles (seller_id, coffin_id, data_venda, client_id) VALUES (3, 2, '2024-05-05', 5);
+INSERT INTO coffin_salles (seller_id, coffin_id, data_venda, client_id) VALUES (1, 3, '2024-06-06', 6);
+INSERT INTO coffin_salles (seller_id, coffin_id, data_venda, client_id) VALUES (2, 4, '2024-05-07', 7);
+INSERT INTO coffin_salles (seller_id, coffin_id, data_venda, client_id) VALUES (3, 4, '2024-05-08', 8);
+INSERT INTO coffin_salles (seller_id, coffin_id, data_venda, client_id) VALUES (3, 5, '2024-05-09', 9);
+INSERT INTO coffin_salles (seller_id, coffin_id, data_venda, client_id) VALUES (3, 5, '2024-06-10', 10);
 
 INSERT INTO funeral_parlor_usages (funeral_parlor_id, uso, data_uso)
 VALUES (1,'1 dia', '2024-06-06');

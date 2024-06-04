@@ -16,6 +16,7 @@ public interface CoffinSalesGateway {
 
     void createCoffinSales(CoffinSalesRequest coffinSalesRequest);
 
+
     void updateCoffinSales(Long id, CoffinSalesRequest coffinSalesRequest);
 
     ResponseEntity<byte[]> getReportToCoffinSales();

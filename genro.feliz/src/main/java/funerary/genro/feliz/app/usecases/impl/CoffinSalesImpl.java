@@ -59,6 +59,7 @@ public class CoffinSalesImpl implements CoffinSalesGateway {
         newCoffinSales.setCoffin(coffinSalesRequest.getCoffin());
         newCoffinSales.setSeller(coffinSalesRequest.getSeller());
         newCoffinSales.setDataVenda(coffinSalesRequest.getDataVenda());
+        newCoffinSales.setClient(coffinSalesRequest.getClient());
         this.coffinSalesRepository.save(newCoffinSales);
     }
 
