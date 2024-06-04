@@ -40,6 +40,8 @@ public class Client {
 
     private String estadoCivil;
 
+    private String ativo;
+
     private Long telefone;
 
 

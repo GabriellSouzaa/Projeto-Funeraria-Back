@@ -35,6 +35,11 @@ public class ClientController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping(path = "/report")
+    ResponseEntity<?> getReportClientDeath() {
+        return this.clientGateway.getReportClientDeath();
+    }
+
     @PostMapping(path = "/create")
     ResponseEntity<?> createClient(@RequestBody ClientRequest clientRequest){
         this.clientGateway.createClient(clientRequest);

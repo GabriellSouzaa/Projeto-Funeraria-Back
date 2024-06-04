@@ -20,6 +20,11 @@ public class ClientRepositoryImpl implements ClientRepository {
     }
 
     @Override
+    public List<Client> findAllByAtivo(String ativo) {
+        return this.clientData.findAllByAtivo(ativo);
+    }
+
+    @Override
     public Optional<Client> findById(Long id) {
         return this.clientData.findById(id);
     }

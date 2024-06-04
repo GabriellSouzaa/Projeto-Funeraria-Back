@@ -9,6 +9,8 @@ public interface ClientRepository {
 
     List<Client> findAll();
 
+    List<Client> findAllByAtivo(String ativo);
+
     Optional<Client> findById(Long id);
 
     Optional<Client> findByNome(String nome);

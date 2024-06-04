@@ -3,13 +3,18 @@ package funerary.genro.feliz.app.usecases.impl;
 import funerary.genro.feliz.app.exception.custom.ClientNotFoundException;
 import funerary.genro.feliz.app.models.requests.ClientRequest;
 import funerary.genro.feliz.app.models.responses.ClientResponse;
+import funerary.genro.feliz.app.models.responses.CoffinSalesResponse;
 import funerary.genro.feliz.app.repositories.ClientRepository;
 import funerary.genro.feliz.app.usecases.ClientGateway;
 import funerary.genro.feliz.domain.Client;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.io.File;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -72,6 +77,34 @@ public class ClientImpl implements ClientGateway {
             client.setTelefone(clientRequest.getTelefone());
             this.clientRepository.save(client);
         }
+    }
+
+    public List<ClientResponse> getClientsUnactive(){
+        List<Client> clients = this.clientRepository.findAllByAtivo("N");
+        return clients.stream().map(ClientResponse::from).collect(Collectors.toList());
+    }
+
+    @Override
+    public ResponseEntity<byte[]> getReportClientDeath() {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(Objects.requireNonNull(classLoader.getResource("relatorios/clientes-mortos.jrxml")).getFile());
+
+        List<ClientResponse> clients = this.getClientsUnactive();
+
+        LocalDateTime dataEmissao = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        String dataEmissaoFormatada = dataEmissao.format(formatter);
+
+        JRBeanCollectionDataSource clientsDealth = new JRBeanCollectionDataSource(clients);
+        Map<String, Object> parametros = new HashMap<>();
+
+        parametros.put("clientsDealth", clientsDealth);
+        parametros.put("dataEmissaoFormatada", dataEmissaoFormatada);
+
+
+        byte[] bytes = ReportUtilsImpl.geraRelatorioEmPDF(file.getAbsolutePath(), parametros);
+
+        return ReportUtilsImpl.retornaResponseEntityRelatorio(bytes);
     }
 
     @Override
