@@ -5,11 +5,13 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Entity
-@Table(name = "patient_death")
+@Table(name = "funeral_parlor_usages")
 @Getter
 @Setter
-public class PatientDeath {
+public class FuneralParlorUsages {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,14 +20,7 @@ public class PatientDeath {
     @ManyToOne
     private FuneralParlor funeralParlor;
 
+    private String uso;
 
-    @OneToOne
-    private Client client;
-
-    @ManyToOne
-    private Coffin coffin;
-
-    private String chemicalConservation;
-
-    private String descriptionDeath;
+    private LocalDate dataUso;
 }

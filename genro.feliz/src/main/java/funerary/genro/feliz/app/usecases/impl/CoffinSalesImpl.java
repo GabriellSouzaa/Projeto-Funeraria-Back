@@ -6,6 +6,7 @@ import funerary.genro.feliz.app.models.requests.CoffinSalesRequest;
 import funerary.genro.feliz.app.models.responses.CoffinResponse;
 import funerary.genro.feliz.app.models.responses.CoffinSalesResponse;
 import funerary.genro.feliz.app.models.responses.DelayedFuneralPlanResponse;
+import funerary.genro.feliz.app.models.responses.SellerSallesResponse;
 import funerary.genro.feliz.app.repositories.CoffinRepository;
 import funerary.genro.feliz.app.repositories.CoffinSalesRepository;
 import funerary.genro.feliz.app.usecases.CoffinSalesGateway;
@@ -79,12 +80,14 @@ public class CoffinSalesImpl implements CoffinSalesGateway {
         List<CoffinSalesResponse> coffinsSales = this.getCoffinsSales();
         LocalDate now = LocalDate.now();
         LocalDate startOfCurrentMonth = now.withDayOfMonth(1);
+        LocalDate startOfNextMonth = startOfCurrentMonth.plusMonths(1);
 
        return coffinsSales.stream()
-                .filter(sale -> sale.getDataVenda().isAfter(startOfCurrentMonth)
-                        && sale.getDataVenda().isBefore(now.plusMonths(1)))
+                .filter(sale -> !sale.getDataVenda().isBefore(startOfCurrentMonth)
+                        && sale.getDataVenda().isBefore(startOfNextMonth))
                 .collect(Collectors.toList());
     }
+
 
     @Override
     public ResponseEntity<byte[]> getReportToCoffinSales() {
