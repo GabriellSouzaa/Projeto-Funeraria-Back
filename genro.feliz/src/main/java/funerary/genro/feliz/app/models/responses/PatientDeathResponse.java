@@ -9,11 +9,11 @@ public class PatientDeathResponse {
 
     private Long id;
 
-    private FuneralParlor funeralParlor;
+    private String funeralParlor;
 
-    private Client client;
+    private String client;
 
-    private Coffin coffin;
+    private String coffin;
 
     private String chemicalConservation;
 
@@ -21,9 +21,9 @@ public class PatientDeathResponse {
 
     private PatientDeathResponse(PatientDeath patientDeath){
         this.id = patientDeath.getId();
-        this.funeralParlor = patientDeath.getFuneralParlor();
-        this.client = patientDeath.getClient();
-        this.coffin = patientDeath.getCoffin();
+        this.funeralParlor = patientDeath.getFuneralParlor().getDescricao();
+        this.client = patientDeath.getClient().getNome();
+        this.coffin = patientDeath.getCoffin().getModelo();
         this.chemicalConservation = patientDeath.getChemicalConservation();
         this.descriptionDeath = patientDeath.getDescriptionDeath();
     }
