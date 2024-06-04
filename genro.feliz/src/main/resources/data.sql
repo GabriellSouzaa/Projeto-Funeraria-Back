@@ -106,7 +106,7 @@ VALUES ('Sala de Velório Secundária', 1200.00);
 INSERT INTO funeral_parlor (descricao, valor)
 VALUES ('Sala de Velório VIP', 2000.00);
 
-INSERT INTO beneficiarios (client_id, nome, data_nascimento, adicional, ativo, email)
+INSERT INTO beneficiary (client_id, nome, data_nascimento, adicional, ativo, email)
 VALUES
     (1, 'Ana Souza', '2005-06-15', 100.50, 'S', 'matheusxmg2@gmail.com'),
     (1, 'João Souza', '2008-12-20', 150.00, 'S', 'matheusxmg2@gmail.com'),
