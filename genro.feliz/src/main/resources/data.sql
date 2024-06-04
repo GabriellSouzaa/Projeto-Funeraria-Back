@@ -6,7 +6,7 @@ insert into users( login, password, role) values ('souza@gmail.com', 'teste', 'A
 
 
 INSERT INTO cliente (nome, data_nascimento, cidade_nascimento, rg, cpf, profissao, religiao, estado_civil, telefone, email)
-VALUES ('Sergio Eduardo de Souza', '2003-03-07', 'Assis', '27815852271', '29985158258', 'Caminhoneiro', 'Catolico', 'Casado', 18996829186, 'matheusxmg2@gmail.com');
+VALUES ('Sergio Eduardo de Souza', '2003-03-07', 'Assis', '27815852271', '29985158258', 'Caminhoneiro', 'Catolico', 'Casado', 18996829186, 'vitordelantonia@gmail.com');
 
 INSERT INTO cliente (nome, data_nascimento, cidade_nascimento, rg, cpf, profissao, religiao, estado_civil, telefone, email)
 VALUES ('Maria Silva', '1995-09-15', 'São Paulo', '354879621', '48561247895', 'Enfermeira', 'Espírita', 'Solteira', '11987654321', 'matheusxmg2@gmail.com');
@@ -170,3 +170,9 @@ VALUES (2,'2 dias', '2024-06-06');
 
 INSERT INTO funeral_parlor_usages (funeral_parlor_id, uso, data_uso)
 VALUES (3,'3 dias', '2024-06-06');
+
+INSERT INTO health_plan (descricao, telefone, valor) VALUES ('Consulta Médica', '11987654321', 100.00);
+INSERT INTO health_plan (descricao, telefone, valor) VALUES ('Plano Odontológico', '11976543210', 150.00);
+INSERT INTO health_plan (descricao, telefone, valor) VALUES ('Consulta Psiquiátrica', '11965432109', 200.00);
+INSERT INTO health_plan (descricao, telefone, valor) VALUES ('Exames Laboratoriais', '11954321098', 250.00);
+INSERT INTO health_plan (descricao, telefone, valor) VALUES ('Terapia Física', '11943210987', 300.00);
