@@ -5,15 +5,21 @@ import funerary.genro.feliz.app.models.requests.CoffinRequest;
 import funerary.genro.feliz.app.models.requests.CoffinSalesRequest;
 import funerary.genro.feliz.app.models.responses.CoffinResponse;
 import funerary.genro.feliz.app.models.responses.CoffinSalesResponse;
+import funerary.genro.feliz.app.models.responses.DelayedFuneralPlanResponse;
 import funerary.genro.feliz.app.repositories.CoffinRepository;
 import funerary.genro.feliz.app.repositories.CoffinSalesRepository;
 import funerary.genro.feliz.app.usecases.CoffinSalesGateway;
 import funerary.genro.feliz.domain.Coffin;
 import funerary.genro.feliz.domain.CoffinSales;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.io.File;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -68,6 +74,41 @@ public class CoffinSalesImpl implements CoffinSalesGateway {
             coffinSales.setDataVenda(coffinSalesRequest.getDataVenda());
             this.coffinSalesRepository.save(coffinSales);
         }
+    }
+    public List<CoffinSalesResponse> coffins(){
+        List<CoffinSalesResponse> coffinsSales = this.getCoffinsSales();
+        LocalDate now = LocalDate.now();
+        LocalDate startOfCurrentMonth = now.withDayOfMonth(1);
+
+       return coffinsSales.stream()
+                .filter(sale -> sale.getDataVenda().isAfter(startOfCurrentMonth)
+                        && sale.getDataVenda().isBefore(now.plusMonths(1)))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public ResponseEntity<byte[]> getReportToCoffinSales() {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(Objects.requireNonNull(classLoader.getResource("relatorios/venda-mensal-caixao.jrxml")).getFile());
+
+
+        List<CoffinSalesResponse> coffinsSales = this.coffins();
+
+
+        LocalDateTime dataEmissao = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        String dataEmissaoFormatada = dataEmissao.format(formatter);
+
+        JRBeanCollectionDataSource coffin = new JRBeanCollectionDataSource(coffinsSales);
+        Map<String, Object> parametros = new HashMap<>();
+
+        parametros.put("coffinsSales", coffin);
+        parametros.put("dataEmissaoFormatada", dataEmissaoFormatada);
+
+
+        byte[] bytes = ReportUtilsImpl.geraRelatorioEmPDF(file.getAbsolutePath(), parametros);
+
+        return ReportUtilsImpl.retornaResponseEntityRelatorio(bytes);
     }
 
     @Override

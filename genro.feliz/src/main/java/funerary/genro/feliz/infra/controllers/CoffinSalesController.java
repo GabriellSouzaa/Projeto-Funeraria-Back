@@ -52,4 +52,9 @@ public class CoffinSalesController {
         this.coffinSalesGateway.deleteCoffinSales(id);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping(path = "/report")
+    ResponseEntity<?> getReportCoffinSales(){
+        return this.coffinSalesGateway.getReportToCoffinSales();
+    }
 }

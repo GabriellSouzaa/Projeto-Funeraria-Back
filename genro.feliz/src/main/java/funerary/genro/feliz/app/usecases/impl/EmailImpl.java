@@ -60,6 +60,7 @@ public class EmailImpl implements EmailGateway {
         sendEmail(client,funeralPlan);
     }
 
+
     public void sendEmail(Optional<Client> client, Optional<FuneralPlan> funeralPlan) {
         Map<String, Object> templateModel = new HashMap<>();
         templateModel.put("name", client.get().getNome());

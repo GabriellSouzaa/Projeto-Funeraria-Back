@@ -1,8 +1,6 @@
 package funerary.genro.feliz.app.models.responses;
 
-import funerary.genro.feliz.domain.Coffin;
 import funerary.genro.feliz.domain.CoffinSales;
-import funerary.genro.feliz.domain.Seller;
 import lombok.Getter;
 
 import java.time.LocalDate;
