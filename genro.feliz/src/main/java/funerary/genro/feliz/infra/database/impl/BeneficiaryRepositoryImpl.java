@@ -30,8 +30,8 @@ public class BeneficiaryRepositoryImpl implements BeneficiaryRepository {
     }
 
     @Override
-    public List<Beneficiary> findAllByAtivo(String ativo) {
-        return this.beneficiaryData.findAllByAtivo(ativo);
+    public List<Beneficiary> findAllByAtivoAndClient(String ativo, Client id) {
+        return this.beneficiaryData.findAllByAtivoAndClient(ativo, id);
     }
 
     @Override

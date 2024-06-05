@@ -12,7 +12,7 @@ public interface BeneficiaryRepository {
 
     List<Beneficiary> findAllByClient(Client client);
 
-    List<Beneficiary> findAllByAtivo(String ativo);
+    List<Beneficiary> findAllByAtivoAndClient(String ativo, Client id);
 
     Optional<Beneficiary> findById(Long id);
 

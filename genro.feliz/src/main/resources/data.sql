@@ -110,13 +110,13 @@ INSERT INTO beneficiary (client_id, nome, data_nascimento, adicional, ativo, ema
 VALUES
     (1, 'Ana Souza', '2005-06-15', 100.50, 'S', 'matheusxmg2@gmail.com'),
     (1, 'João Souza', '2008-12-20', 150.00, 'S', 'matheusxmg2@gmail.com'),
-    (2, 'Carlos Silva', '2010-05-30', 200.75, 'S', 'matheusxmg2@gmail.com'),
+    (2, 'Carlos Silva', '2010-05-30', 200.75, 'N', 'matheusxmg2@gmail.com'),
     (2, 'Marta Silva', '2011-07-15', 180.30, 'S', 'matheusxmg2@gmail.com'),
     (3, 'Lucas Oliveira', '2007-03-10', 250.00, 'S', 'matheusxmg2@gmail.com'),
     (3, 'Sofia Oliveira', '2013-01-25', 170.20, 'S', 'matheusxmg2@gmail.com'),
-    (4, 'Juliana Santos', '2006-09-10', 300.00, 'S', 'matheusxmg2@gmail.com'),
+    (4, 'Juliana Santos', '2006-09-10', 300.00, 'N', 'matheusxmg2@gmail.com'),
     (5, 'Mariana Pereira', '2012-01-25', 220.15, 'S', 'matheusxmg2@gmail.com'),
-    (5, 'Pedro Pereira', '2014-06-17', 190.40, 'S', 'matheusxmg2@gmail.com'),
+    (5, 'Pedro Pereira', '2014-06-17', 190.40, 'N', 'matheusxmg2@gmail.com'),
     (6, 'Roberto Costa', '2007-04-15', 210.60, 'S', 'matheusxmg2@gmail.com');
 
 INSERT INTO patient_death (funeral_parlor_id, client_id, coffin_id, chemical_conservation, description_death)

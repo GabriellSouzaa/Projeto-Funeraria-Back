@@ -53,7 +53,8 @@ public class BeneficiaryImpl implements BeneficiaryGateway {
 
     @Override
     public List<BeneficiaryResponse> getBeneficiariesDeathOfClient(Long id) {
-        List<Beneficiary> beneficiaries = this.beneficiaryRepository.findAllByAtivo("N");
+        Optional<Client> optionalClient = this.clientRepository.findById(id);
+        List<Beneficiary> beneficiaries = this.beneficiaryRepository.findAllByAtivoAndClient("N", optionalClient.get());
         return beneficiaries.stream().map(BeneficiaryResponse::from).collect(Collectors.toList());
     }
 
