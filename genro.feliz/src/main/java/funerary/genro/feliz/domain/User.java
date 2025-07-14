@@ -24,14 +24,21 @@ public class User implements UserDetails {
     private Long id;
     private String login;
     private String password;
-
+    private String firstName;
+    private String lastName;
+    private String cpf;
+    private  String dataNascimento;
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
-    public User(String login, String password, UserRole role){
+    public User(String login, String password, UserRole role,String firstName, String lastName, String cpf, String dataNascimento){
         this.login = login;
         this.password = password;
         this.role = role;
+        this.cpf = cpf;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.dataNascimento = dataNascimento;
     }
 
     @Override

@@ -34,6 +34,9 @@ public class Client {
 
     private String cpf;
 
+    @Lob
+    private byte[] imagem;
+
     private String profissao;
 
     private String religiao;

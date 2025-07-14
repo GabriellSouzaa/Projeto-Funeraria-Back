@@ -1,29 +1,36 @@
+
 spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
   application:
     name: genrofeliz
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:genrofeliz
-    username: sa
-    password:
-
+    url: jdbc:postgresql://localhost:5432/genroFeliz
+    username: postgres
+    password: 1234
+    driver-class-name: org.postgresql.Driver
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
-    defer-datasource-initialization: true
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
 
-  h2:
-    console:
-      enabled: false
-      path: /h2-console
+  flyway:
+    baseline-on-migrate: true
+    enabled: false
+    locations: classpath:db/migration
 
   mail:
     default-encoding: utf-8
     host: smtp.gmail.com
     port: 587
     username: gabrielsouzapequi@gmail.com
-    password: rqxj kilj blgk quoi
+    password: svqh vvpk ryfz fwgh
     properties:
       mail:
         smtp:
@@ -37,3 +44,7 @@ api:
   security:
       token:
         secret: ${JWT_SECRET:my-secret-key}
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.h2: DEBUG

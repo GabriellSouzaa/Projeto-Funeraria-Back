@@ -9,7 +9,7 @@ public interface ClientRepository {
 
     List<Client> findAll();
 
-    List<Client> findAllByAtivo(String ativo);
+    List<Client> buscarTodosAtivos(String ativo);
 
     Optional<Client> findById(Long id);
 

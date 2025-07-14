@@ -20,7 +20,7 @@ public class ClientRepositoryImpl implements ClientRepository {
     }
 
     @Override
-    public List<Client> findAllByAtivo(String ativo) {
+    public List<Client> buscarTodosAtivos(String ativo) {
         return this.clientData.findAllByAtivo(ativo);
     }
 

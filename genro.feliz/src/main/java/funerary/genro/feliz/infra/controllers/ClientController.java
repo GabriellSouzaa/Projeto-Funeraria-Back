@@ -6,8 +6,10 @@ import funerary.genro.feliz.app.models.responses.DiscountResponse;
 import funerary.genro.feliz.app.usecases.ClientGateway;
 import io.swagger.annotations.Api;
 
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -17,7 +19,6 @@ import java.util.List;
 public class ClientController {
 
     private final ClientGateway clientGateway;
-
 
     public ClientController(ClientGateway clientGateway){
         this.clientGateway = clientGateway;
@@ -47,8 +48,8 @@ public class ClientController {
         return this.clientGateway.getReportClientDeath();
     }
 
-    @PostMapping(path = "/create")
-    ResponseEntity<?> createClient(@RequestBody ClientRequest clientRequest){
+    @PostMapping(path = "/create",  consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    ResponseEntity<?> createClient(@ModelAttribute ClientRequest clientRequest){
         this.clientGateway.createClient(clientRequest);
         return ResponseEntity.ok().build();
     }

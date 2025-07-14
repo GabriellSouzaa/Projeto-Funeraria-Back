@@ -2,6 +2,7 @@ package funerary.genro.feliz.app.models.requests;
 
 import funerary.genro.feliz.domain.Client;
 import lombok.Getter;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 
@@ -15,6 +16,8 @@ public class ClientRequest {
     private String cidadeNascimento;
 
     private String rg;
+
+    private MultipartFile image;
 
     private String cpf;
 

@@ -87,6 +87,7 @@ public class EmailImpl implements EmailGateway {
         Map<String, Object> templateModel = new HashMap<>();
         templateModel.put("name", client.get().getNome());
         templateModel.put("nomeBeneficiary", optionalBeneficiary.get().getNome());
+        templateModel.put("mail.smtp.ssl.trust", "smtp.gmail.com");
 
         try {
             MimeMessage message = javaMailSender.createMimeMessage();

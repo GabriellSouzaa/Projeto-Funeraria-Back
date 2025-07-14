@@ -13,6 +13,7 @@ public class ClientResponse {
     private final LocalDate dataNascimento;
     private final String cidadeNascimento;
     private final String rg;
+    private final byte[] imagem;
     private final String cpf;
     private final String profissao;
     private final String religiao;
@@ -31,6 +32,7 @@ public class ClientResponse {
         this.religiao = client.getReligiao();
         this.estadoCivil = client.getEstadoCivil();
         this.telefone = client.getTelefone();
+        this.imagem = client.getImagem();
     }
 
     public static ClientResponse from(Client client){ return new ClientResponse(client);}

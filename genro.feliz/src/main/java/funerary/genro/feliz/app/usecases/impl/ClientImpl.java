@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -57,6 +58,16 @@ public class ClientImpl implements ClientGateway {
         newClient.setReligiao(clientRequest.getReligiao());
         newClient.setEstadoCivil(clientRequest.getEstado_civil());
         newClient.setTelefone(clientRequest.getTelefone());
+        if (clientRequest.getImage() != null && !clientRequest.getImage().isEmpty()) {
+            byte[] imageData = null;
+            try {
+                imageData = clientRequest.getImage().getBytes();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            newClient.setImagem(imageData);
+        }
+
         this.clientRepository.save(newClient);
     }
 
@@ -76,6 +87,15 @@ public class ClientImpl implements ClientGateway {
             client.setReligiao(clientRequest.getReligiao());
             client.setEstadoCivil(clientRequest.getEstado_civil());
             client.setTelefone(clientRequest.getTelefone());
+            if (clientRequest.getImage() != null && !clientRequest.getImage().isEmpty()) {
+                byte[] imageData = null;
+                try {
+                    imageData = clientRequest.getImage().getBytes();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                client.setImagem(imageData);
+            }
             this.clientRepository.save(client);
         }
     }
@@ -92,7 +112,7 @@ public class ClientImpl implements ClientGateway {
     }
 
     public List<ClientResponse> getClientsUnactive(){
-        List<Client> clients = this.clientRepository.findAllByAtivo("N");
+        List<Client> clients = this.clientRepository.buscarTodosAtivos("N");
         return clients.stream().map(ClientResponse::from).collect(Collectors.toList());
     }
 
