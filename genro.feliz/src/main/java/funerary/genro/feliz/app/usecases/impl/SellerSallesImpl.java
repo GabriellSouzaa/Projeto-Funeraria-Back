@@ -69,7 +69,7 @@ public class SellerSallesImpl implements SellerSallesGateway {
 
 
         byte[] bytes = ReportUtilsImpl.geraRelatorioEmPDF(file.getAbsolutePath(), parametros);
-
-        return ReportUtilsImpl.retornaResponseEntityRelatorio(bytes);
+        String nomeArquivo = "VendaMensalVendedor.pdf";
+        return ReportUtilsImpl.retornaResponseEntityRelatorio(bytes, nomeArquivo);
     }
 }

@@ -16,16 +16,28 @@ public class DelayedFuneralPlanResponse {
 
     private String cpfCliente;
 
-    private Float valorAPagar;
+    private String valorAPagar;
 
     private DelayedFuneralPlanResponse(FuneralPlan funeralPlan){
         this.id = funeralPlan.getId();
         this.tempoAtrasado = CalculateDelayedPlan.calcularDiasAtraso(funeralPlan);
         this.nomeCliente = funeralPlan.getClient().getNome();
-        this.cpfCliente = funeralPlan.getClient().getCpf();
+        this.cpfCliente = formatarCPF(funeralPlan.getClient().getCpf()) ;
         this.valorAPagar = CalculateDelayedPlan.valorAPagar(funeralPlan);
     }
 
+    public static String formatarCPF(String cpf) {
+
+        String apenasNumeros = cpf.replaceAll("\\D", "");
+
+
+        if (apenasNumeros.length() != 11) {
+            return cpf;
+        }
+
+
+        return apenasNumeros.replaceAll("(\\d{3})(\\d{3})(\\d{3})(\\d{2})", "$1.$2.$3-$4");
+    }
 
     public static DelayedFuneralPlanResponse from(FuneralPlan funeralPlan){
         return new DelayedFuneralPlanResponse(funeralPlan);

@@ -38,7 +38,10 @@ public class ReportUtilsImpl {
         return outputStream.toByteArray();
     }
 
-    public static ResponseEntity<byte[]> retornaResponseEntityRelatorio(byte[] relatorio){
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_PDF_VALUE).body(relatorio);
+    public static ResponseEntity<byte[]> retornaResponseEntityRelatorio(byte[] relatorio, String nomeArquivo){
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + nomeArquivo + "\"")
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_PDF_VALUE)
+                .body(relatorio);
     }
 }

@@ -111,8 +111,8 @@ public class CoffinSalesImpl implements CoffinSalesGateway {
 
 
         byte[] bytes = ReportUtilsImpl.geraRelatorioEmPDF(file.getAbsolutePath(), parametros);
-
-        return ReportUtilsImpl.retornaResponseEntityRelatorio(bytes);
+        String nomeArquivo = "VendaMensalCaixao.pdf";
+        return ReportUtilsImpl.retornaResponseEntityRelatorio(bytes, nomeArquivo);
     }
 
     @Override

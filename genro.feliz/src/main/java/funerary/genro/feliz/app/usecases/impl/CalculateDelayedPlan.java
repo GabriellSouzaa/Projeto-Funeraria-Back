@@ -3,21 +3,30 @@ package funerary.genro.feliz.app.usecases.impl;
 import funerary.genro.feliz.domain.FuneralPlan;
 import org.springframework.stereotype.Service;
 
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Locale;
 
 @Service
 public class CalculateDelayedPlan {
 
-    public static Float valorAPagar(FuneralPlan funeralPlan){
+    public static String valorAPagar(FuneralPlan funeralPlan) {
         Float valor = funeralPlan.getValor();
         LocalDate hoje = LocalDate.now();
-        if(hoje.isAfter(funeralPlan.getDataPagamento())){
-            long diasAtraso = ChronoUnit.DAYS.between(funeralPlan.getDataPagamento(), hoje);
+
+        if (hoje.isAfter(funeralPlan.getDataPagamento())) {
+            long mesesAtraso = ChronoUnit.MONTHS.between(
+                    funeralPlan.getDataPagamento().withDayOfMonth(1),
+                    hoje.withDayOfMonth(1)
+            );
             double taxaJuros = 0.05;
-            return (float) (valor * Math.pow(1 + taxaJuros, diasAtraso));
+            valor = (float) (valor * Math.pow(1 + taxaJuros, mesesAtraso));
+            System.out.println("Valor com juros: " + valor);
         }
-        return valor;
+
+        NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+        return nf.format(valor);
     }
 
     public static String calcularDiasAtraso(FuneralPlan funeralPlan) {

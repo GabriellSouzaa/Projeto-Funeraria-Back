@@ -79,8 +79,9 @@ public class BeneficiaryImpl implements BeneficiaryGateway {
 
 
         byte[] bytes = ReportUtilsImpl.geraRelatorioEmPDF(file.getAbsolutePath(), parametros);
+        String nomeArquivo = "RelatorioBeneficiarios.pdf";
 
-        return ReportUtilsImpl.retornaResponseEntityRelatorio(bytes);
+        return ReportUtilsImpl.retornaResponseEntityRelatorio(bytes, nomeArquivo);
     }
 
     @Override

@@ -29,7 +29,7 @@ public class ClientImpl implements ClientGateway {
 
     @Override
     public List<ClientResponse> getClients() {
-       List<Client> clients = this.clientRepository.findAll();
+       List<Client> clients = this.clientRepository.buscarTodosAtivos("S");
        return clients.stream().map(ClientResponse::from).collect(Collectors.toList());
     }
 
@@ -135,8 +135,8 @@ public class ClientImpl implements ClientGateway {
 
 
         byte[] bytes = ReportUtilsImpl.geraRelatorioEmPDF(file.getAbsolutePath(), parametros);
-
-        return ReportUtilsImpl.retornaResponseEntityRelatorio(bytes);
+        String nomeArquivo = "ClienteMortos.pdf";
+        return ReportUtilsImpl.retornaResponseEntityRelatorio(bytes, nomeArquivo);
     }
 
     @Override

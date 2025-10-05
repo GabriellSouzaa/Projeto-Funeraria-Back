@@ -68,8 +68,8 @@ public class FuneralPlanImpl implements FuneralPlanGateway {
 
 
         byte[] bytes = ReportUtilsImpl.geraRelatorioEmPDF(file.getAbsolutePath(), parametros);
-
-        return ReportUtilsImpl.retornaResponseEntityRelatorio(bytes);
+        String nomeArquivo = "PlanosAtrasados.pdf";
+        return ReportUtilsImpl.retornaResponseEntityRelatorio(bytes, nomeArquivo);
     }
 
     @Override

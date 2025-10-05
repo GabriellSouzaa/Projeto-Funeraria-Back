@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="planos-atrasados" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f6e4db4-9f8f-4ffe-9759-6e1fd142f492">
 	<property name="template.type" value="columnar"/>
 	<style name="Title" forecolor="#000000" fontName="Times New Roman" fontSize="50" isBold="false"/>
@@ -45,8 +45,8 @@
 			<![CDATA[]]>
 		</queryString>
 		<field name="nomeBeneficiario" class="java.lang.String"/>
-		<field name="dataNascimento" class="java.time.LocalDate"/>
-		<field name="adicional" class="java.lang.Float"/>
+		<field name="dataNascimento" class="java.lang.String"/>
+		<field name="adicional" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="dataEmissaoFormatada" class="java.lang.String"/>
 	<parameter name="nomeClient" class="java.lang.String"/>
@@ -185,12 +185,7 @@
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="92" splitType="Stretch">
-			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
-				<reportElement x="100" y="0" width="370" height="91" uuid="ddc6005c-753b-4335-b833-d9dc18ecbe3f"/>
-				<imageExpression><![CDATA["https://i.ibb.co/f9z8xmx/logo-sao-vicente.png"]]></imageExpression>
-			</image>
-		</band>
+		<band height="92" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
 		<band splitType="Stretch"/>

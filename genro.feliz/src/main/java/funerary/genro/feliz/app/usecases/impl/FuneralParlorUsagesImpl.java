@@ -70,8 +70,8 @@ public class FuneralParlorUsagesImpl implements FuneralParlorUsagesGateway {
 
 
         byte[] bytes = ReportUtilsImpl.geraRelatorioEmPDF(file.getAbsolutePath(), parametros);
-
-        return ReportUtilsImpl.retornaResponseEntityRelatorio(bytes);
+        String nomeArquivo = "SalasUsadas.pdf";
+        return ReportUtilsImpl.retornaResponseEntityRelatorio(bytes, nomeArquivo);
     }
 
 
