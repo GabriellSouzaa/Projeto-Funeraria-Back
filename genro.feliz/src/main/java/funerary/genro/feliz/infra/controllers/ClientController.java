@@ -48,8 +48,9 @@ public class ClientController {
         return this.clientGateway.getReportClientDeath();
     }
 
-    @PostMapping(path = "/create",  consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    ResponseEntity<?> createClient(@ModelAttribute ClientRequest clientRequest){
+    @PostMapping(path = "/create")
+    ResponseEntity<?> createClient(@RequestBody ClientRequest clientRequest){
+        System.out.println(clientRequest);
         this.clientGateway.createClient(clientRequest);
         return ResponseEntity.ok().build();
     }

@@ -50,6 +50,7 @@ public class ClientImpl implements ClientGateway {
     public void createClient(ClientRequest clientRequest) {
         Client newClient = new Client();
         newClient.setNome(clientRequest.getNome());
+        newClient.setAtivo("S");
         newClient.setDataNascimento(clientRequest.getDataNascimento());
         newClient.setCidadeNascimento(clientRequest.getCidadeNascimento());
         newClient.setRg(clientRequest.getRg());
@@ -58,15 +59,7 @@ public class ClientImpl implements ClientGateway {
         newClient.setReligiao(clientRequest.getReligiao());
         newClient.setEstadoCivil(clientRequest.getEstado_civil());
         newClient.setTelefone(clientRequest.getTelefone());
-        if (clientRequest.getImage() != null && !clientRequest.getImage().isEmpty()) {
-            byte[] imageData = null;
-            try {
-                imageData = clientRequest.getImage().getBytes();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            newClient.setImagem(imageData);
-        }
+        newClient.setImagem(null);
 
         this.clientRepository.save(newClient);
     }
